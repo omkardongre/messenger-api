@@ -6,8 +6,7 @@ export class AppController {
   constructor(@Inject('AUTH_SERVICE') private authService: ClientProxy) {}
 
   @Get()
-  async getUser() {
-    console.log('get user');
-    return this.authService.send({ cmd: 'get-user' }, {});
+  async getUsers() {
+    return this.authService.send({ cmd: 'get-users' }, {});
   }
 }
