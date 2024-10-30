@@ -5,6 +5,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './user.entity';
 import { dataSourceOptions } from './db/data-source';
+import { SharedModule } from '@app/shared';
 
 @Module({
   imports: [
@@ -29,6 +30,7 @@ import { dataSourceOptions } from './db/data-source';
       inject: [ConfigService],
     }),
     TypeOrmModule.forFeature([UserEntity]),
+    SharedModule,
   ],
   controllers: [AuthController],
   providers: [AuthService],
