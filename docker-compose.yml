@@ -51,11 +51,20 @@ services:
     volumes:
       - ./db/data:/var/lib/postgresql/data
 
-  postgres_admin:
-    image: dpage/pgadmin4:latest
+  # postgres_admin:
+  #   image: dpage/pgadmin4:latest
+  #   depends_on:
+  #     - postgres
+  #   ports:
+  #     - 15432:80
+  #   env_file:
+  #     - .env
+
+  adminer:
+    image: adminer:latest
     depends_on:
       - postgres
     ports:
-      - 15432:80
+      - 15432:8080
     env_file:
       - .env
